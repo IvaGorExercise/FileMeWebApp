@@ -1,0 +1,221 @@
+﻿
+<#
+//*********************************************************
+//
+//    Copyright (c) Microsoft. All rights reserved.
+//    This code is licensed under the Microsoft Public License.
+//    THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF
+//    ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY
+//    IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR
+//    PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.
+//
+//*********************************************************
+#>
+<#@ template language="C#" debug="false" hostspecific="true"#>
+<#@ include file="EF.Utility.CS.ttinclude"#>
+<#@ Assembly Name= "$(SolutionDir)Common\bin\debug\Common.dll" #>
+<#@ import namespace="Common" #>
+<#@
+ output extension=".cs"#><#
+
+CodeGenerationTools code = new CodeGenerationTools(this);
+MetadataLoader loader = new MetadataLoader(this);
+CodeRegion region = new CodeRegion(this, 4);
+MetadataTools ef = new MetadataTools(this);
+
+
+string inputFile = @"..\..\..\..\Model\Model1.edmx";
+EdmItemCollection ItemCollection = loader.CreateEdmItemCollection(inputFile);
+string namespaceName = "Repository.Repository.T4";
+string annotationNamespace = "http://schemas.microsoft.com/ado/2009/02/edm/annotation";
+string EntityName ="";
+
+
+
+EntityFrameworkTemplateFileManager fileManager = EntityFrameworkTemplateFileManager.Create(this);
+
+// Write out support code to primary template output file
+
+
+EntityContainer container = ItemCollection.GetItems<EntityContainer>().FirstOrDefault();
+var storeCRUD = container.FunctionImports;
+
+
+#>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Model;
+using System.Diagnostics;
+using Repository;
+using System.Data.Objects;
+using Repository.Extension;
+using Repository.Helper;
+using System.Data;
+
+namespace Repository.Repository.T4
+{
+
+	public partial class BasicRepository
+	{
+
+ 		#region Fields
+    	internal FileMeEntities _context;
+    	#endregion
+    
+    	#region Constructor
+    	public BasicRepository(FileMeEntities context)
+    	{
+       	this._context = context;
+    	}
+   		#endregion
+
+
+		#region MethodForAll
+		public void SaveChanges()
+        {
+            _context.SaveChanges();
+        }
+		#endregion
+	
+<#
+foreach (var entity in ItemCollection.GetItems<EntityType>().Where(e => !e.Name.Contains("aspnet_")).OrderBy(e => e.Name))
+{	
+		EntityName = code.Escape(entity);
+#>	
+ 		#region <#=entity.Name+"Repository"#>
+
+ 		public IEnumerable<#="<"+EntityName+">"#> GetData(<#= "List<Model.Field."+entity.Name+">"#> fields, <#= "List<Model.Filter."+entity.Name+">"#>  filter, <#= "List<Model.Sort."+entity.Name+">"#>  sort, long? start = null, long? count = null)
+        {
+           string query = String.Empty;
+           query = QueryBuliderHelper.CreateQuery(fields, filter, sort, start, count);
+           return _context.Database.SqlQuery<#= "<"+entity.Name +">"#>(query);
+        }
+
+
+		public IEnumerable<#="<"+EntityName+">"#> <#=EntityName#>GridData(string filterExpression, string sortingExpression, int startIndex, int count)
+		{
+		   if (!String.IsNullOrEmpty(filterExpression))
+                return _context.<#=EntityName#>
+                    .Where(filterExpression)
+                    .OrderBy(sortingExpression)
+                    .Skip(startIndex)
+                    .Take(count);
+            else
+                return _context.<#=EntityName#>
+                    .OrderBy(sortingExpression)
+                    .Skip(startIndex)
+                    .Take(count);
+		}
+		
+		public int <#=EntityName#>GetCount(string filterExpression) 
+		{
+			if (!String.IsNullOrEmpty(filterExpression))
+
+                return _context.<#=EntityName#>.Where(filterExpression).Count();
+
+            else
+                return _context.<#=EntityName#>.Count();
+		}
+		
+			<#
+    foreach (EdmProperty edmProperty in entity.Properties.Where(p => p.TypeUsage.EdmType is PrimitiveType && p.DeclaringType == entity))
+    { 		
+	#>
+	<# 
+			string imeFECjelo = edmProperty.Name;
+			string imeFE_ID = imeFECjelo.Substring(0,2);
+			int prvi = imeFECjelo.IndexOf("_")+1;
+			string imeFE_Ostatak = imeFECjelo.Substring(prvi);
+	
+		if (imeFE_ID == "ID" && (code.Escape(edmProperty.TypeUsage) == "Nullable<int>" || code.Escape(edmProperty.TypeUsage) == "int"))
+		{	
+			MetadataProperty storeGeneratedPatternProperty = null;
+    		edmProperty.MetadataProperties.TryGetValue(annotationNamespace + ":StoreGeneratedPattern", false, out storeGeneratedPatternProperty);
+	
+  			if (storeGeneratedPatternProperty == null)
+  			{ 					
+	#>	
+	
+		public IEnumerable<#="<"+EntityName+">"#> <#=EntityName+"ById"+imeFE_Ostatak+"(int key, string sortingExpression, int startIndex, int count)"#>
+		{
+		   	if (!key.Equals(0))
+                return _context.<#=EntityName#>
+                    .Where(p => p.<#=edmProperty#> == key)
+                    .OrderBy(sortingExpression)
+                    .Skip(startIndex)
+                    .Take(count);
+            else
+                return _context.<#=EntityName#>
+                    .OrderBy(sortingExpression)
+                    .Skip(startIndex)
+                    .Take(count);
+		}
+		<#	
+	}		
+}				
+} 
+#>
+
+
+<# 
+	if (T4.IsView(EntityName) == false)
+	{
+ #>
+	 	public <#=EntityName#> <#=EntityName+"FindByKey(int key)"#>
+        {
+            return <#="_context."+EntityName+".SingleOrDefault(p => p."+entity.KeyMembers.ElementAt(0)+" == key);"#>
+        }
+
+	
+
+		public <#=EntityName#> <#=EntityName#>_Insert(<#=EntityName#> item)
+        {
+            <#=EntityName#> inserted;
+            inserted =_context.<#=EntityName#>.Add(item);
+            SaveChanges();
+            return inserted;
+        }
+
+		public bool <#=EntityName#>_Update(<#=EntityName#> item)
+        {
+           bool proof = false;
+           _context.Entry(item).State = EntityState.Modified;
+           SaveChanges();
+           proof = true;
+           return proof;
+        }
+
+		public bool <#=EntityName#>_Delete(int key)
+        {
+            bool proof = false;
+            <#=EntityName#> ob = _context.<#=EntityName#>.Find(key);
+           _context.<#=EntityName#>.Remove(ob);
+            SaveChanges();
+            proof = true;
+            return proof;
+        }
+
+		public IEnumerable<#= "<"+EntityName +">"#> <#=EntityName#>_Select()
+        {
+           return _context.<#=EntityName#>;
+        }
+
+<#
+		}
+#>
+		#endregion
+
+<#		
+}
+
+#>
+
+	}
+}
+
+
+
+
+

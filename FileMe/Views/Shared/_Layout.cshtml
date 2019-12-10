@@ -1,0 +1,150 @@
+﻿
+@{
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+
+@helper selected (string c, string culture)
+{
+    if (c== culture)
+    {
+        @:checked = "checked";
+    }
+}
+
+<style>
+  .video-container
+  {
+     width:350px;
+     height:500px;
+     position:relative;
+     float:left;
+     background-image: url(/Content/intro/SE1Background.png);
+     background-repeat: no-repeat;
+  }
+
+
+.video-content{
+    z-index: 10;
+    position:absolute;
+    float:left;
+    margin-left: 23px;
+    margin-top: 87px;
+}
+
+  .col-md-8 {
+        color: #ffffff;
+    }
+
+
+   .container-fluid2
+   {
+       border:0px solid transparent;
+      background: #02c3d8; /* Old browsers */
+background: -moz-linear-gradient(-45deg,  #02c3d8 0%, #02b7ea 57%, #00cfea 76%, #00aedf 90%, #00aedf 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#02c3d8), color-stop(57%,#02b7ea), color-stop(76%,#00cfea), color-stop(90%,#00aedf), color-stop(100%,#00aedf)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(-45deg,  #02c3d8 0%,#02b7ea 57%,#00cfea 76%,#00aedf 90%,#00aedf 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(-45deg,  #02c3d8 0%,#02b7ea 57%,#00cfea 76%,#00aedf 90%,#00aedf 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(-45deg,  #02c3d8 0%,#02b7ea 57%,#00cfea 76%,#00aedf 90%,#00aedf 100%); /* IE10+ */
+background: linear-gradient(135deg,  #02c3d8 0%,#02b7ea 57%,#00cfea 76%,#00aedf 90%,#00aedf 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#02c3d8', endColorstr='#00aedf',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    }
+
+
+
+ .navbar-default {
+  background-color: #00ff21;
+  border-color: #00ff21;
+}
+
+ a.linkJezik
+{
+    background: url("~/Content/intro/Croatian-icon.png") no-repeat top left;
+     display: block;
+     width: 50px;
+     height: 30px;
+     text-indent: -9999px; /* hides the link text */
+}
+
+
+</style>
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid2">
+            <div class="col-md-12" >
+
+            <!-- Brand and toggle get grouped for better mobile display -->
+       
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="@(ViewContext.RouteData.GetRequiredString("action") == "Index" ? "active" : "")"><a href="/Home/Index">HOME</a></li>
+                    <li class="@(ViewContext.RouteData.GetRequiredString("action") == "Contact" ? "active" : "")"><a href="/Home/Contact">CONTACT</a></li>
+                </ul>
+
+                 <div class="pull-right">
+                    @Html.Partial("_LoginPartial")
+                </div>
+
+        @using (Html.BeginForm("SetCulture", "Home"))
+           {
+                <a href="@Url.Action("ChangeCulture", "Home",  new { lang = "hr-HR"})"><img src="@Url.Content("~/Content/intro/Croatian-icon.png")" /></a>
+                <a href="@Url.Action("ChangeCulture", "Home",  new { lang = "en-US"})"><img src="@Url.Content("~/Content/intro/United-Kingdom-icon.png")" /></a>
+            }
+            </div>
+            
+</div>
+
+        </div>
+    </nav>
+
+
+    <div class="container2">
+        <div class="row">
+
+                @RenderBody()
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                    <p class="copyright text-muted">@DateTime.Now.Year &copy; FileMe </p>
+            </div>
+        </div>
+    </footer>
+
+        @Scripts.Render("~/bundles/jquery")
+
+<script src="~/Scripts/bootstrap.js"></script>
+
+</body>
+
+</html>
+
+<script type="text/javascript">
+
+</script>
+

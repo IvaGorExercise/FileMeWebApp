@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Model.Pitanje>
+
+<br />
+<br />
+<br />
+
+ <div class="container">
+
+    <div class="row">
+        <div class="col-xs-12">
+            <table class="table col-xs-12" id="tablicaPitanje">
+            <thead style="display: none;">
+                <tr>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+             
+              @if (@Model != null)
+                {
+                      foreach (var item in Model)
+                      {
+                           <tr>
+                               <td>
+                                   @Html.Partial("_Pitanje", item)
+                               </td>
+                          </tr>
+                     }
+                }
+
+          </tbody>
+        </table>
+        </div>
+   </div>
+
+
+@*@if (@Model != null)
+{
+    foreach (var item in Model)
+    {
+    @Html.Partial("_PitanjeContainer", item)
+    }
+}*@
+
+ </div>
+
+<link href="~/Content/jquery.dataTables.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.9.1.js"></script>
+<script src="~/Scripts/jquery.dataTables.js"></script>
+<script src="~/Scripts/dataTables.bootstrap.js"></script>
+
+   <script>
+
+
+          $('#tablicaPitanje').dataTable({
+            "iDisplayLength": 3,
+            "aLengthMenu": [[3, 5, 10, 20, -1], [3, 5, 10, 20, "Sve"]],
+            "oLanguage": {
+                "sInfo": "Prikaz _START_ do _END_ od _TOTAL_ unosa",
+                "sSearch": ""
+            }
+        });
+
+        $('.dataTables_length select').addClass("form-control");
+        $('.dataTables_length select').css("width", "50%");
+
+        $('.dataTables_filter input').addClass("col-xs-12 pull-right");
+
+        $('.dataTables_filter input').attr("placeholder", "Traži");
+
+
+    </script>

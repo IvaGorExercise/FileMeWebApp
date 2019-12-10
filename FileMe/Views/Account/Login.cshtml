@@ -1,0 +1,77 @@
+﻿@model FileMe.Models.LoginModel
+
+
+<style>
+
+
+
+  .form-group
+  {
+      color:#A3A3A3;
+  }
+
+
+
+  .btn-primary
+  {
+      background-color: #00aedf;
+
+  }
+   
+</style>
+
+ <div class="container">
+   <br />
+   <br />
+   <br />
+
+     <div class ="col-md-12">
+           <img src="~/Content/intro/LogoCrnaSlova.png" alt="FileMe">
+        </div>
+
+<section id="loginForm">
+@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+
+        <dl class="dl-horizontal col-md-10">
+           <dt class="form-group checkbox">
+                    @Html.LabelFor(m => m.UserName, new { @style = "font-weight:bold" })
+                </dt>
+                <dd class="form-group ">
+                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.UserName)
+                </dd>
+
+            <dt class="form-group checkbox">
+                    @Html.LabelFor(m => m.Password, new { @style = "font-weight:bold" })
+                </dt>
+                <dd class="form-group ">
+                    @Html.TextBoxFor(m => m.Password, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Password)
+                </dd>
+
+             <dt class="form-group">
+                    @Html.LabelFor(m => m.RememberMe, new { @style = "font-weight:bold" })
+                </dt>
+                <dd class="form-group ">
+                    @Html.CheckBoxFor(m => m.RememberMe)
+                </dd>
+
+             <dd class="form-group">
+                    <input type="submit" class="btn btn-primary btn-lg"  value="LOG IN" /></dd>
+
+         </dl> 
+
+    </fieldset>@*
+    <p>
+        @Html.ActionLink("Register", "Register") if you don't have an account.
+    </p>*@
+}
+</section>
+
+</div>
+
+

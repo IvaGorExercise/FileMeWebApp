@@ -1,0 +1,98 @@
+﻿@model Model.Pitanje
+@{
+    string linkModala = "#myModal" + @Model.ID_Pitanje.ToString();
+    string linkModala1 = "myModal" + @Model.ID_Pitanje.ToString();
+    
+}
+
+<script src="~/Scripts/jquery-1.9.1.js"></script>
+
+<div class="col-xs-12" style="border-top: solid;">
+    <div class="row">
+        <div class="col-xs-12">
+            <div> 
+                <br />
+
+                   <div class="col-md-12" style="background-color: #f3f3f3"><b>Email: </b>  @Model.Email.ToString()</div>
+                 <div class="col-md-6" style="background-color: #f3f3f3"><b>Ime: </b>@Model.Ime </div> <div class="col-md-6" style="background-color: #f3f3f3"><b>Prezime: </b> @Model.Prezime</div>
+            <hr>
+            </div>
+            <div>
+                 <p>@Html.Raw(@Model.PitanjeTekst)</p>
+            </div>
+             <hr>
+            <div>
+                <div>
+                    <div class="col-md-3"><b>Datum pitanja:</b>@Model.DatumPitanja</div>
+                    <div class="col-md-2"><b>Pročitano:</b>
+                        @Model.Procitano
+                    </div>
+                    <div class="col-md-2"><b>Odgovoreno:</b> @Model.Odgovoreno </div>
+                    <div class="col-md-3"><b>Datum odgovora:</b> @Model.DatumOdgovora.ToString()</div>
+                    <div class="col-md-1"> 
+                        <div class="btn-group-vertical" style="width:80px;">
+                            <a href="/Manage/UrediPitanje/@Model.ID_Pitanje" class="btn btn-primary"> Uredi</a>
+                        </div>
+                    </div>
+                    <div class="col-md-1"> 
+                        <div class="btn-group-vertical" style="width:80px;">
+                            <a data-toggle="modal" href="@linkModala"  class="btn btn-danger"> Obriši</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+              <br />
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="@linkModala1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Obriši?</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-6">
+
+                            <b>Objavljeno:</b> @Model.DatumPitanja.ToString()<br />
+                            <b>Prikaz do:</b> @Model.DatumOdgovora.ToString()
+                        </div>
+                        <div class="col-xs-6">
+                            @if (Model.Slika != null)
+                            {
+                                <a class="btn btn-default" href="@Model.Slika" target="_blank">Slika</a>
+                            }
+                          
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <hr>
+                            <p>@Html.Raw(@Model.PitanjeTekst)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="/Manage/ObrisiPitanje/@Model.ID_Pitanje" class="btn btn-primary"> Obriši</a>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Odustani</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.moda -->
+
+</div>
+
+    <script>
+
+    @*    $('@linkModala').on('click', function () {
+            alert("hhjh");
+            modal()
+        });*@
+
+    </script>

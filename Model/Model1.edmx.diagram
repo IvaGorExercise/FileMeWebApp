@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3904c80fa5d24d929248968822f4690a" Name="Diagram1">
+        <EntityTypeShape EntityType="FileMeModel.ErrorLog" Width="1.5" PointX="3.7979131675315618" PointY="0.3006808312147301" />
+        <EntityTypeShape EntityType="FileMeModel.webpages_Membership" Width="1.5" PointX="8.25" PointY="2.75" />
+        <EntityTypeShape EntityType="FileMeModel.webpages_Roles" Width="1.5" PointX="3.1789682745835597" PointY="13.951805732190518" />
+        <EntityTypeShape EntityType="FileMeModel.UserProfile" Width="1.5" PointX="2.2779870137004123" PointY="5.9622558234083725" />
+        <EntityTypeShape EntityType="FileMeModel.Pitanje" Width="1.5" PointX="3.7774598094529752" PointY="27.699882073188146" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

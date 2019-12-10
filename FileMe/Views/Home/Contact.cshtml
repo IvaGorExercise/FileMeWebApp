@@ -1,0 +1,146 @@
+﻿@model FileMe.Models.Pitanje
+
+<style>
+  .container
+  {
+      background-color: #ffffff;
+  }
+
+   .container-inner {
+        background-color: #ffffff;
+        width: inherit;
+        height: inherit;
+    }
+
+  footer
+      {
+        background-color: #ffffff;
+    }
+
+
+
+   .form-group
+  {
+      color:#A3A3A3;
+  }
+
+  .alert-success
+  {
+      background-color: #ffffff;
+      border: 0px solid transparent;
+      width: 300px;
+      box-sizing:border-box;
+
+  }
+
+   .alert
+  {
+       border: 0px solid transparent;
+  }
+
+
+  .btn-primary
+  {
+      background-color: #00aedf;
+
+  }
+   
+</style>
+
+
+<div class="container-inner">
+ <div class="container">
+
+  <br />
+  <br />
+   <br />
+
+
+<hgroup class="title">
+    <h1></h1>
+</hgroup>
+
+  <div class="row">
+    <div class="col-xs-12">
+       <div class ="col-md-12">
+           <img src="~/Content/intro/LogoCrnaSlova.png" alt="FileMe">
+        </div>
+        <hgroup class="title">
+        </hgroup>
+
+  
+
+        @*<h2>Use a local account to log in.</h2>*@
+        @using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+             @Html.HiddenFor(model => model.Slika)
+
+
+        
+            <dl class="dl-horizontal col-md-10">
+
+                <dt class="form-group checkbox">
+                    @Html.LabelFor(m => m.Ime, new { @style = "font-weight:bold" })
+                </dt>
+                <dd class="form-group ">
+                    @Html.TextBoxFor(m => m.Ime, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Ime)
+                </dd>
+
+                <dt class="form-group checkbox">
+                    @Html.LabelFor(m => m.Prezime, new { @style = "font-weight:bold" })
+                </dt>
+                <dd class="form-group ">
+                    @Html.TextBoxFor(m => m.Prezime, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Prezime)
+                </dd>
+
+                  <dt class="form-group checkbox">
+                    @Html.LabelFor(m => m.Email, new { @style = "font-weight:bold" })
+                </dt>
+                <dd class="form-group ">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Email, String.Empty, new { @style="color:red" })
+                </dd>
+
+                <dt class="form-group checkbox">
+                    @Html.LabelFor(m => m.PitanjeTekst, new { @style = "font-weight:bold" })
+                </dt>
+                <dd class="form-group ">
+                    @Html.TextAreaFor(m => m.PitanjeTekst, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.PitanjeTekst, String.Empty, new { @style="color:red" })
+                </dd>
+
+              
+
+                    <dd class="form-group ">
+                        <input type="file" name="file" id="file" /> @Html.LabelFor(model => model.Slika, new { @style = "font-weight:bold" })
+                        @Html.ValidationMessageFor(x => x.File, String.Empty, new { @style="color:red" })
+                     </dd>
+
+                 <dt class="form-group checkbox">
+                    @Html.LabelFor(m => m.Tag, new { @style = "font-weight:bold" })
+                </dt>
+                <dd class="form-group ">
+                    @Html.TextBoxFor(m => m.Tag, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Tag)
+                </dd>
+
+                <dd class="form-group">
+                    <input type="submit" class="btn btn-primary btn-lg" value="POŠALJI PORUKU" /></dd>
+
+                <div class ="col-md-8">@Html.TextBoxFor(m => m.SuccessMessage, new { @class = "alert alert-success" })</div>
+
+            </dl> 
+             
+            
+        }
+    </div>
+</div>
+
+
+     </div>
+    </div>

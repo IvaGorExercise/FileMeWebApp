@@ -1,0 +1,424 @@
+﻿@{
+ViewBag.Title = "Index";
+}
+ 
+
+<style>
+  .video-style
+  {
+     text-align: center;
+    
+  }
+
+   .jumbotron
+  {
+     margin-top:0px;
+     padding-bottom:0px;
+     margin-bottom:0px;
+  }
+
+  .container
+  {
+     padding-bottom:0px;
+     margin-bottom:0px;
+  }
+
+
+h2
+ {
+  font-size: 190%;
+}
+
+
+</style>
+
+
+    <header class="intro-header2">
+<div class="jumbotron">
+  <div class="container">
+      <div class ="col-md-8">
+           <img src="~/Content/intro/Logo.png" alt="FileMe">
+          <p> Evidencija članova <p>
+          <div><p> FileMe je Android aplikacija namijenjena svima koji vode razne aktivnosti koje uključuju evidenciju članstva i uplata članarina kao što su: sportski treneri, treneri pilatesa, plesa, voditelji glazbenih, likovnih i ostalih tečajeva.</p>
+   	  <p> U aplikciji je moguće: definirati grupe aktivnosti, unositi članove, podatke o članovima, koji je član upisan u koju grupu ili grupe, voditi evidenciju o uplati članarina, te voditi evidenciju o terminima održnih sati te prisutnih članova na satu.</p>
+   	   <p>Moguće je definirati i svoje atribute (podatke) o članovima koji su specifični za određene aktivnosti. </p>
+<p></div>
+      <div> 
+
+     <button class="btn btn-default btn-lg" type="button" data-toggle="dropdown" aria-expanded="false">
+    Download 
+  </button>
+
+     </div>   
+
+      </div>
+
+       <div class ="col-md-4">
+         <div class="video-container"></div>
+           <div class="video-content">
+                <video  width="254" height="365"  loop autoplay  style="">
+                <source type="video/mp4" src="~/Content/video/HR/IntroHr.mp4" autoplay="true" ></source>
+                    Vaš browser ne podržava video tag.
+                </video>
+            </div>
+       </div>
+
+
+  </div>
+</div>
+    </header>
+
+
+ <div class="container">
+
+
+<div class="row">
+<div class="col-md-3">
+<h2>Dvije vrste evidencije</h2>
+<p> 
+Dvije vrste vođenja članarina ovisno o odabiru vrste evidencije u postavkama aplikcije. (1) Evidencije po mjesecu, ako je datum uplate bilo koji dan u mjesecu, članarina vrijedi do zadnjeg dana tog mjeseca.
+   	  (2) Evidencija članarina od datuma do datuma, ako je datum uplate bilo koji dan u mjesecu, članarina vrijedi do istog tog datum u slijedećem mjesecu.
+
+</p>
+@*<p>
+<a class="btn btn-default" role="button" href="#">View details »</a>
+</p>*@
+</div>
+<div class="col-md-3">
+<h2>Definiranje vlastitih (atributa) podataka</h2>
+<p>Uz postojeće predefinirane atribute (podatke) o članovima kao što su: ime, prezime, adresa, datum rođenja, spol... korisnik aplikacije može definirati i svoje atribute koji odgovarju vrsti aktivnosti kojom se bavi npr. za sportaše: visina, težina; za glazbenike: raspon glasa.</p>
+<p>
+</div>
+ <div class="col-md-3">
+<h2>Unos grupa aktivnosti</h2>
+<p>Grupe su aktivnosti u koje su upisani članovi npr: početna grupa, napredna, pilates, zumba1, zumba2, juniori, seniori...  Za svaku grupu moguće je voditi članarine i pregeldavati istekle članarine. Moguć je pregled članova po grupama te ukupnog broja članova.</p>
+<p>
+</div>
+<div class="col-md-3">
+<h2>Evidencija održanih satova</h2>
+<p>U aplikaciji je moguće odabrati grupu i datum održavanja nastavnog sata za tu grupu. Nakon toga je za taj nastavni sat moguće odabrati i spremiti sve članove koji su bili prisutni na satu. Sve odražne nastavne sate moguće je pregledavati na listi održanih termina.</p>
+<p>
+</div>
+
+</div>
+
+<hr>
+     <h3> Upute </h3>
+<div class="row">
+
+<div class="col-md-6">
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Nakon instalcije, prije početka korištenja aplikacije...
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+<p>Na glavnom izborniku izberite opciju <b>Postavke aplikacije.</b> Na ekranu pod B) VRSTA EVIDENCIJE odabrati vrstu evidencije (1. po mjesecu ili 2. od datum do datuma). Predefinirana vrsta evidencije je 1. evidencija po mjesecu. Ukoliko se vrsta evidencije ne mijenja, više nikad nije potrebno mijenjati tu opciju u postavkama aplikacije.
+   	    Ako se vrsta evidencije mijenja tokom vremena, a već postoje uneseni podaci o članarinam, može doći do netočnog prikaza prije unesenih podatka. Prije unosa korisnika preporučeno je da se prvo unesu grupe i atributi.</p>
+   
+          <div class ="video-style">
+             <video  controls  width="254" height="365">
+                <source type="video/mp4" src="~/Content/video/HR/VrstaEvidencije.mp4" autoplay="true" ></source>
+                    Vaš browser ne podržava video tag.
+                </video>
+
+              </div>
+
+      </div>
+    </div>
+  </div> 
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Jezik aplikcije
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+FileMe omogućeje rad na dva jezika: hrvatski i engleski neovisno o izabranom jeziku u postavkama telefona.
+           Jezik aplikacije bira se u <b>Postavkama aplikacije</b> pod A) JEZIK
+
+       <div class ="video-style">
+             <video controls  width="254" height="365">
+                <source type="video/mp4" src="~/Content/video/HR/Jezik.mp4" autoplay="true" ></source>
+                    Vaš browser ne podržava video tag.
+                </video>
+      </div>
+           
+
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Grupe
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div class="panel-body">
+          <p> <b>Unos grupa </b> <br/>
+          Grupe su aktivnosti u koje su upisani članovi. Na glavnom izborniku izberite opciju <b>Grupe</b> koja vas vodi na ekran sa popisom Vaših grupa. Na vrhu ekrana odaberite znak "+" koji vas vodi na formu za unos grupe. Upišite ime grupe (obavezno) i po želji opis grupe.
+          Pritisnite gumb "Spremi" i novo unesena grupa biti će na listi grupa.</p>
+
+           <p><b>Izmjena i brisanje grupa </b> <br/>
+               Na listi grupa odaberite grupu koju želite izmjeniti ili obristi. Prikazat će se gumbi "Uredi" i "Briši". Obabir gumba "Uredi" otvorit će formu sa detaljima grupe, naprvite Vaše izmjene i odabrite "Spremi".
+               Odabirom gumba "Briši"  pojavit će se dialog sa pitnjem da li želite obrisati grupu, te sa upozorenjem da ako obrišete grupu, a ona ima su upisane članove i postoje unesene članarine, ti podaci će biti nepovratno o o o o o obrisani.
+         </p>
+
+          <div class ="video-style">
+             <video controls  width="254" height="365">
+                <source type="video/mp4" src="z/Content/video/HR/Grupe.mp4" autoplay="true" ></source>
+                    Vaš browser ne podržava video tag.
+                </video>
+      </div>
+
+      </div>
+    </div>
+  </div>
+      <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingFour">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          Atributi
+        </a>
+      </h4>
+    </div>
+    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+      <div class="panel-body">
+          <p><b>Unos atributa </b> <br/>
+          Uz postojeće predefinirane atribute (podatke) o članovima kao što su: ime, prezime, adresa, datum rođenja, spol... korisnik aplikacije može definirati i svoje atribute koji odgovarju vrsti aktivnosti kojom se bavi npr. za sportaše: visina, težina. Na glavnom izborniku izberite opciju<b>Moji atributi</b> koja vas vodi na ekran sa popisom Vaših atributa. Na vrhu ekrana odaberite znak "+" koji vas vodi na formu za unos atributa. Upišite ime atributa (obavezno) i po želji opis atributa.
+          Pritisnite gumb "Spremi" i novo uneseni atribut biti će na listi atributa.</p>
+
+           <p><b>Izmjena i brisanje atributa </b> <br/>
+               Na listi grupa odaberite grupu koju želite izmjeniti ili obristi. Prikazat će se gumbi "Uredi" i "Briši". Obabir gumba "Uredi" otvorit će formu sa detaljima grupe, napravite Vaše izmjene i odabrite "Spremi".
+               Odabirom gumba "Briši"  pojavit će se dialog sa pitnjem da li želite obrisati atribut, te sa upozorenjem da, ako obrišete atribut nepovratno će se obrisati i uneseni podaci  za taj atribut za sve članove.
+         </p>
+
+        <div class ="video-style">
+             <video controls  width="254" height="365">
+                <source type="video/mp4" src="~/Content/video/HR/Atributi.mp4" autoplay="true" ></source>
+                    Vaš browser ne podržava video tag.
+                </video>
+      </div>
+
+      </div>
+    </div>
+  </div>
+    <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingFive">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+          Članovi
+        </a>
+      </h4>
+    </div>
+    <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+      <div class="panel-body">
+          <p><b>Unos članova </b><br/>
+          Na glavnom izborniku izberite opciju <b>Unos članova</b> koja vas vodi na formu za unos člana. Upišite podatke o članu i odaberite grupu ili grupe u kojima je član. Obavezni podaci su ime i prezime.
+          Pritisnite gumb "Spremi" i novo uneseni član biti će na listi članova.</p>
+
+           <p><b>Izmjena i brisanje člana </b><br/>
+               Na listi članova odaberite člana kojeg želite izmjeniti ili obristi. Otvorit će se stranica sa detaljnim podacima za tog člana sa gumbima "Uredi" i "Briši". Obabir gumba "Uredi" otvorit će formu za unos/izmjenu člana. Naprvite Vaše izmjene i odabrite "Spremi".
+               Odabirom gumba "Briši"  pojavit će se dialog sa pitnjem da li želite obrisati člana, te sa upozorenjem da ako obrišete člana nepovratno će se obrisati svi podci o članu, grupama u koje je upisan te o uplati članarina.
+         </p>
+
+       <div class ="video-style">
+             <video controls  width="254" height="365">
+                <source type="video/mp4" src="~/Content/video/HR/UnosClana.mp4" autoplay="true" ></source>
+                    Vaš browser ne podržava video tag.
+                </video>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+   
+</div>
+
+</div> 
+
+    <div class="col-md-6">
+<div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
+  
+     <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne2">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion2" href="#collapseOne2" aria-expanded="true" aria-controls="collapseOne2">
+          Popis članova
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne2">
+      <div class="panel-body">
+<p>Na glavnom izborniku izberite opciju <b>Popis članova</b> koja Vas vodi na ekran sa popisom članova. Za svakog člana navedeno je prezime i ime te grupa ili grupe u koje je upisan.
+          Za pretragu članova po prezimenu na vrhu je tražilica.
+          Odabirom člana otvara se ekran sa detaljnim podacima za tog člana.
+          Za unos novog člana na vrhu ekrana odaberite znak "+" koji vas vodi na formu za unos člana. </p>
+
+     <div class ="video-style">
+             <video controls  width="254" height="365">
+                <source type="video/mp4" src="~/Content/video/HR/ListaClanova.mp4" autoplay="true" ></source>
+                    Vaš browser ne podržava video tag.
+                </video>
+      </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo2">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo2">
+         Članarina
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo2">
+      <div class="panel-body">
+<p>Na glavnom izborniku izberite opciju <b>Članarina</b> koja vas vodi na ekran sa popisom grupa i članova po tim grupama te da li je član uplatio članarinu za određeni mjesec.
+          Na vrhu ekrana je gumb kalendar koji služi za odabir mjeseca i godine za koju se bilježi članarina. Predefinare vrijednosti mjeseca, dana i godine su trenutni datum.</p>
+
+         <p><b>Unos članarine </b><br/>
+          Na vrhu ekrana odaberite  mjesec i godinu za koji unosite članarinu. Odberite grupu. Prikazat će se svi članovi u toj grupi. Kliknite na prazan check box na članu z kojeg želite unjeti članarinu, otvorit će se kalendar sa ponuđenim tekućim datumom kao datumom uplate.
+          Pritisnite "Gotovo" i članarina će biti unesena. Ako datum uplate koji nije tekući, izaberite ga na kalendaru. Moguće je odabrati datume unutar mjeseca odabranog na kalendaru na vrhu ekrana. </p>
+
+        <p><b>Brisanje članarine </b> <br/>
+          Kliknite na označeni check box na članu za kojeg želite obrisati članarinu. Otvorit će se dialog sa pitanjem da li želite obrisati uplatu članarine. Odberite "Da" i članarina će biti obrisana. </p>
+  
+    <div class ="video-style">
+             <video controls  width="254" height="365">
+                <source type="video/mp4" src="~/Content/video/HR/Clanarina.mp4" autoplay="true" ></source>
+                    Vaš browser ne podržava video tag.
+                </video>
+     </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingThree2">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree2" aria-expanded="false" aria-controls="collapseThree2">
+          Istekle članarine
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree2">
+      <div class="panel-body">
+<p>Na glavnom izborniku izberite opciju <b>Istekle članarine</b> koja vas vodi na ekran sa popisom grupa i članova po tim grupama čija je članarina istekla na dan prikazan na vrhu ekrana i odabran na gumbu klendar.
+    Predefinirani datum za istekle članarine je tekući datum. 
+    Ako je neki član upisan u grupi a iz nekog razloga neko vrijeme ne plaća članarinu moguće ga je pauzirati te se on neće pojavljivati na popisu članova sa isteklom članarinom.
+    Za pauzirnje člana odaberite check box "Pauziran".
+</p>
+
+    <div class ="video-style">
+             <video controls  width="254" height="365">
+                <source type="video/mp4" src="~/Content/video/HR/IstekleClanarine.mp4" autoplay="true" ></source>
+                    Vaš browser ne podržava video tag.
+                </video>
+      </div>
+
+      </div>
+    </div>
+  </div>
+    <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingFour2">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseFour2" aria-expanded="false" aria-controls="collapseFour2">
+          Pauziranje članstva
+        </a>
+      </h4>
+    </div>
+    <div id="collapseFour2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour2">
+      <div class="panel-body">
+<p><b>Pauziranje na ekranu isteklih članarina </b><br/>Na glavnom izborniku izberite opciju <b>Istekle članarine</b> koja vas vodi na ekran sa popisom grupa i članova po tim grupama čija je članarina istekla na dan prikazan na vrhu ekrana i odabran na gumbu kalendar.
+    Ako je neki član upisan u grupi, a iz nekog razloga neko vrijeme ne plaća članarinu, moguće ga je pauzirati te se on neće pojavljivati na popisu članov sa isteklom članarinom.
+    Za pauziranje člana odaberite check box "Pauziran".
+</p>
+
+    <div class ="video-style">
+             <video controls  width="254" height="365">
+                <source type="video/mp4" src="~/Content/video/HR/PauzirajNaIsteklim.mp4" autoplay="true" ></source>
+                    Vaš browser ne podržava video tag.
+                </video>
+      </div>
+
+  <p><b>Pauziranje na ekranu članovi po grupama </b><br/>Na glavnom izborniku izberite opciju <b>Članovi po grupama</b> koja vas vodi na ekran sa popisom grupa i članova po tim grupama te prikazoom ukupnog broja članova na vrhu ekrana.
+    Ako je neki član upisan u grupi, a iz nekog razloga neko vrijeme ne plaća članarinu moguće ga je pauzirati te se on neće pojavljivati na popisu članov sa isteklom članarinom.
+   Odaberite grupu, člana kojeg želite pauzirati te odaberite check box "Pauziran".
+    <br/>Za poništavanje statusa "Pauzirn" odznčite  check box "Pauziran".
+</p>
+
+  <div class ="video-style">
+      <video controls  width="254" height="365">
+                <source type="video/mp4" src="~/Content/video/HR/PauzirajNaClanoviPoGrupama.mp4" autoplay="true" ></source>
+                    Vaš browser ne podržava video tag.
+                </video>
+      </div>
+      </div>
+    </div>
+  </div>
+
+      <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingFive2">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseFive2" aria-expanded="false" aria-controls="collapseFive2">
+          Evidencija nastave
+        </a>
+      </h4>
+    </div>
+    <div id="collapseFive2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive2">
+      <div class="panel-body">
+<p>Na glavnom izborniku izberite opciju <b>Evidencija nastave</b> koja vas vodi na ekran za unos novog nastavnog sat na izabrani datum za izabranu grupu. Ako se u istom danu za istu grupu održava više sati, moguće je upisti redni broj sata za tu grupu radi lakšeg razlikovanja.
+    <br/>  Odaberite datum, odaberite grupu, unesite redni broj i pritisnite gumb "Spremi". Nakon uspješnog unosa sata pojavit će se ekran sa imenom grupe, datumom sata te popisom svih članova u toj grupi.
+    Odaberite check box uz svakog prisutnog člana ("Odaberi sve" olakšava odabir svih članova) te pritisnite gumb "Spremi".  Nakon uspješnog spremanja vratit će se ekran za unos novog nastavnog sata. </p>
+
+   <div class ="video-style">
+       <video controls  width="254" height="365">
+         <source type="video/mp4" src="~/Content/video/HR/UnosNastavnogSata.mp4" autoplay="true" ></source>
+                    Vaš browser ne podržava video tag.
+          </video>
+    </div>
+
+<p>
+    <b>Lista održanih sati </b> <br />
+    Sa vrha ekrana za unos novog nastavnog sata odabrati bijelu četvrtastu ikonu koja će Vas prebacit na ekran sa popisom održnih sati po grupama.
+    Na vrhu ekrana je gumb kalendar za izbor mjeseca i godine za koji se želi vidjeti lista održanih sati. Odaberite grupu.
+    Za odabranu grupu prikazat će se svi održani sati. Za pregled članova prisutnih na održanom satu odaberite sat. Ako želite izmjeniti tko je bio prisutan na satu ili obrisati nastavni sat odaberite ikone "Olovka" za izmjenu ili "Koš za smeće" za brisanje sata.
+</p>
+
+ <div class ="video-style">
+       <video controls  width="254" height="365">
+         <source type="video/mp4" src="~/Content/video/HR/ListaOdrzaneNastave.mp4" autoplay="true" ></source>
+                    Vaš browser ne podržava video tag.
+          </video>
+    </div>
+
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+</div> 
+
+ </div>
+
+</div>
+
+
